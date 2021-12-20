@@ -32,10 +32,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Pokemon.cbp" />
-		<Unit filename="Pokemon.depend" />
-		<Unit filename="Pokemon.layout" />
-		<Unit filename="Pokimac.cbp" />
 		<Unit filename="affichageTerrain.cpp" />
 		<Unit filename="affichageTerrain.h" />
 		<Unit filename="consoleUtils.hpp" />

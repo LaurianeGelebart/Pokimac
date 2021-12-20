@@ -43,7 +43,7 @@ int main() {
     Pokimac pok1 ;
     string name = "Sasha" ;
 
-    initPlayer(joueur, pok1, name, playerPos); //à analyser car le programme s'arrete ici sinon
+    initPlayer(joueur, pok1, name, playerPos); //corrigée par Laurianne, fonctionnel
     cout << joueur->nom ;
 
     ConsoleUtils::clear();
