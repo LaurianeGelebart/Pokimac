@@ -1,5 +1,5 @@
-// #ifndef "declaration.h"
-// #define "declaration.h"
+ #ifndef DECLARATION.H
+ #define DECLARATION.H
 
 #include "declarations.h"
 #include "consoleUtils.hpp"
@@ -7,7 +7,7 @@
 #include "deplacement.h"
 #include "menuDebut.h"
 
-// #endif
+ #endif
 
 
 #include <algorithm>
@@ -70,6 +70,6 @@ void initPlayer(Joueur *joueur, Pokimac pok1,Position *playerPos){
 
 //Initialiser pokimac
 void initPlayer(Pokimac *pok){
-    pok->
+    pok->nom =
 }
 
