@@ -8,6 +8,7 @@
 #include <cstdio>
 #include <math.h>
 #include <string>
+#include <typeinfo>
 
 #include <iostream>
 
@@ -28,14 +29,14 @@ int main() {
     menuDebut(&longueur, &hauteur);
     // On alloue le tableau 1D
     int NombreDeCases = longueur*hauteur ;
-    int* tab = (int*)malloc(sizeof(int)*NombreDeCases);
+    char* tab = (char*)malloc(sizeof(char)*NombreDeCases);
 
     srand(time(NULL)); //Initialiser le générateur de nombres aléatores
 
-    // On définie une position de départ au joueur et aux pokimacs
-    Position playerPos = {(rand() % hauteur + 1), (rand() % longueur + 1)};
-    Position pokimacPos = {(rand() % hauteur + 1), (rand() % longueur + 1)};
-    Position oldPos;
+    // On définit une position de départ  au joueur et aux pokimacs (pas possible de spawner en dehors ou sur les murs de la grille
+    Position playerPos = {(rand() * ((hauteur-1) - 1) / RAND_MAX + 1 ), (rand() * ((longueur-1) - 1) / RAND_MAX + 1 )};
+    Position pokimacPos = {(rand() * ((hauteur-1) - 1) / RAND_MAX + 1 ), (rand() * ((longueur-1) - 1) / RAND_MAX + 1 )};
+
     /*Position playerPos = {4,4}; //test avec des positions fixes
     Position pokimacPos = {5,7};
     Position oldPos;*/
@@ -47,14 +48,16 @@ int main() {
     cout << joueur->nom ;
 
     ConsoleUtils::clear();
-    while (true){
 
-        affichageTerrain(hauteur, longueur, pokimacPos, &playerPos);
 
-        deplacement(&playerPos, &pokimacPos, &oldPos, hauteur, longueur); //le curseur ne se déplace pas
+    while (true){ //trouver comment sortir du programme
 
-        ConsoleUtils::clear();
+
+        affichageTerrain(hauteur, longueur, tab, &pokimacPos, &playerPos);
+        deplacement(&playerPos, &pokimacPos, hauteur, longueur,tab);
+        //ConsoleUtils::clear();
     }
+    free(tab);
 	return 0;
 }
 

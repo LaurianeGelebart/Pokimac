@@ -10,37 +10,26 @@
 #include <iostream>
 
 
-void affichageTerrain(int const hauteur, int const longueur, Position pokimacPos, Position *playerPos){
+void affichageTerrain(int const hauteur, int const longueur, char* tab, Position *pokimacPos, Position *playerPos){
 
-	int i;
-	int j;
+	//Remplir le tableau avec un pattern specifique
+	for (int j=0; j<hauteur; j++) {
+			for (int i=0; i<longueur; i++) {
+				tab[j*longueur+i] = (i%(longueur-1) == 0 || j%(hauteur-1) == 0) ?  '#' : '.';
+			}
+		}
 
-	// initial display
-    ConsoleUtils::setCursorPos(0,0); std::cout << '+';
-	for (i=1; i<=longueur; i++){
-        int x=0;
-        ConsoleUtils::setCursorPos(x,i); std::cout << '|';
-	}
-	for (i=1; i<=longueur; i++){
-        int x=hauteur+1;
-        ConsoleUtils::setCursorPos(x,i); std::cout << '|';
-	}
-	for (j=1; j<=hauteur; j=j+1){
-        int y=0;
-        ConsoleUtils::setCursorPos(j,y); std::cout << "-";
-	}
-	for (j=1; j<=hauteur; j=j+1){
-        int y=longueur+1;
-        ConsoleUtils::setCursorPos(j,y); std::cout << "-";
-	}
+		// afficher le tableau à l'origine (0,0)
+		ConsoleUtils::setCursorPos(0, 0);
+		for (int j=0; j<hauteur; j++) {
+			for (int i=0; i<longueur; i++) {
+				std::cout << tab[j*longueur+i];
+			}
+			std::cout << std::endl;
+		}
 
-	ConsoleUtils::setCursorPos(0,longueur+1); std::cout << '+';
-	ConsoleUtils::setCursorPos(hauteur+1,0); std::cout << '+';
-	ConsoleUtils::setCursorPos(hauteur+1,longueur+1); std::cout << '+';
-
-    ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(2)); //vert
-
-	ConsoleUtils::setCursorPos(pokimacPos.x, pokimacPos.y); std::cout << 'P';
-	ConsoleUtils::setCursorPos(playerPos->x, playerPos->y); std::cout << "@";
-
+		ConsoleUtils::setCursorPos(playerPos->x, playerPos->y);
+		std::cout << '@'; // Output '@' at my position
+		ConsoleUtils::setCursorPos(pokimacPos->x, pokimacPos->y);
+		std::cout << 'P'; // Output 'P' at position of Pokimac
 }

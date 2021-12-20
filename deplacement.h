@@ -12,6 +12,6 @@
 #include <iostream>
 
 
-void deplacement(Position *playerPos, Position *pokimacPos, Position *oldPos, int const hauteur, int const longueur);
+void deplacement(Position *playerPos, Position *pokimacPos, int const hauteur, int const longueur, char* tab);
 
 #endif // DEPLACEMENT_H
