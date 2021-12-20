@@ -10,7 +10,7 @@
 #include <iostream>
 
 
-void affichageTerrain(int const hauteur, int const longueur, Position pokimacPos, Position playerPos){
+void affichageTerrain(int const hauteur, int const longueur, Position pokimacPos, Position *playerPos){
 
 	int i;
 	int j;
@@ -41,6 +41,6 @@ void affichageTerrain(int const hauteur, int const longueur, Position pokimacPos
     ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(2)); //vert
 
 	ConsoleUtils::setCursorPos(pokimacPos.x, pokimacPos.y); std::cout << 'P';
-	ConsoleUtils::setCursorPos(playerPos.x, playerPos.y); std::cout << "@";
+	ConsoleUtils::setCursorPos(playerPos->x, playerPos->y); std::cout << "@";
 
 }

@@ -12,28 +12,32 @@
 
 
 void deplacement(Position *playerPos, Position *pokimacPos, Position *oldPos, int const hauteur, int const longueur){
-    bool spaceHit = false;
 
+    bool spaceHit = false;
 	while (!spaceHit) {
 		oldPos = playerPos;
 		bool special = false;
-        char c = ConsoleUtils::getChar(&special);// Get
-		switch (c) {
-			case 'z':
-				if((*playerPos).y > 1) --(*playerPos).y;
-				break;
-			case 's':
-				if((*playerPos).y < hauteur) ++(*playerPos).y;
-				break;
-			case 'q':
-				if((*playerPos).x > 1) --(*playerPos).x;
-				break;
-			case 'd':
-				if((*playerPos).x < longueur) ++(*playerPos).x;
-				break;
-			case ' ': spaceHit = true; break;
-			default: break;
-		}
+        int c = ConsoleUtils::getChar(&special); // attend le caractere special
+        if(special) {
+            switch (c) {
+                case ConsoleUtils::KEY_UP:
+                    if((*playerPos).y > 1) ((*playerPos).y)--;
+                    break;
+                case ConsoleUtils::KEY_DOWN:
+                    if((*playerPos).y < hauteur) ((*playerPos).y)++;
+                    break;
+                case ConsoleUtils::KEY_LEFT:
+                    if((*playerPos).x > 1) ((*playerPos).x)--;
+                    break;
+                case ConsoleUtils::KEY_RIGHT:
+                    if((*playerPos).x < longueur) ((*playerPos).x)++;
+                    break;
+                default: break;
+            }
+        }
+        else if (c == ' '){
+			spaceHit = true;
+        }
 
 		if ((*playerPos).x != (*oldPos).x || (*playerPos).y != (*oldPos).y) {
 			ConsoleUtils::setCursorPos((*oldPos).x, (*oldPos).y); std::cout << ' '; // Clean

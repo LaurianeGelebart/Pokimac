@@ -40,18 +40,21 @@ int main() {
     Position pokimacPos = {5,7};
     Position oldPos;*/
 
-    Pokimac pok1 ;
+    Pokimac pok1 ; //premier pokemon dans l'equipe
     string name = "Sasha" ;
 
     initPlayer(joueur, pok1, name, playerPos); //corrigée par Laurianne, fonctionnel
     cout << joueur->nom ;
 
     ConsoleUtils::clear();
-   affichageTerrain(hauteur, longueur, pokimacPos, playerPos);
+    while (true){
 
-    deplacement(&playerPos, &pokimacPos, &oldPos, hauteur, longueur); //on n'arrive pas à se déplacer encore, les touches du clavier ne marche pas
+        affichageTerrain(hauteur, longueur, pokimacPos, &playerPos);
 
-	ConsoleUtils::clear();
+        deplacement(&playerPos, &pokimacPos, &oldPos, hauteur, longueur); //le curseur ne se déplace pas
+
+        ConsoleUtils::clear();
+    }
 	return 0;
 }
 
