@@ -10,6 +10,7 @@
 
 using namespace std;
 
+// Definir Position
 struct Position {
 	int x;
 	int y;
