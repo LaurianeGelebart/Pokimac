@@ -16,7 +16,8 @@ void deplacement(Position *playerPos, Position *pokimacPos, Position *oldPos, in
 
 	while (!spaceHit) {
 		oldPos = playerPos;
-		char c = consoleUtils::getChar(); // Get
+		bool special = false;
+        char c = ConsoleUtils::getChar(&special);// Get
 		switch (c) {
 			case 'z':
 				if((*playerPos).y > 1) --(*playerPos).y;
