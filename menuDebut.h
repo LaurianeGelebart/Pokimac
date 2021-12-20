@@ -1,3 +1,6 @@
+#ifndef MENUDEBUT_H
+#define MENUDEBUT_H
+
 #include "consoleUtils.hpp"
 
 #include <algorithm>
@@ -12,3 +15,4 @@ using namespace std;
 
 void menuDebut(int* longueur, int* hauteur );
 
+#endif // MENUDEBUT_H

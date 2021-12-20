@@ -36,11 +36,11 @@ void deplacement(Position *playerPos, Position *pokimacPos, Position *oldPos, in
 		}
 
 		if ((*playerPos).x != (*oldPos).x || (*playerPos).y != (*oldPos).y) {
-			consoleUtils::setCursorPos((*oldPos).x, (*oldPos).y); std::cout << ' '; // Clean
-			consoleUtils::setCursorPos((*playerPos).x, (*playerPos).y); std::cout << "@";
+			ConsoleUtils::setCursorPos((*oldPos).x, (*oldPos).y); std::cout << ' '; // Clean
+			ConsoleUtils::setCursorPos((*playerPos).x, (*playerPos).y); std::cout << "@";
 		}
 		if (((*playerPos).x == (*pokimacPos).x) && ((*playerPos).y == (*pokimacPos).y) ){
-            consoleUtils::clear();
+            ConsoleUtils::clear();
             std::cout << "Combat" << std::endl;
 		}
 	}

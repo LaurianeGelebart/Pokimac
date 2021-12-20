@@ -1,3 +1,6 @@
+#ifndef DECLARATIONS_H
+#define DECLARATIONS_H
+
 #include "consoleUtils.hpp"
 
 #include <algorithm>
@@ -46,3 +49,4 @@ typedef struct Joueur{
     Position position ;
 } Joueur ;
 
+#endif // DECLARATIONS_H

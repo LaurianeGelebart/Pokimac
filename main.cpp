@@ -1,15 +1,8 @@
- #ifndef DECLARATION.H
- #define DECLARATION.H
-
-#include "declarations.h"
 #include "consoleUtils.hpp"
+#include "declarations.h"
 #include "affichageTerrain.h"
 #include "deplacement.h"
 #include "menuDebut.h"
-
- #endif
-
-
 #include <algorithm>
 #include <cstdlib>
 #include <cstdio>
@@ -20,9 +13,9 @@
 
 using namespace std;
 
-
-void initPlayer(Joueur *joueur, Pokimac pok1,  Position playerPos);
-void initPlayer(Pokimac *pok);
+//Prototypes des fonctions
+void initPlayer(Joueur *joueur, Pokimac pok1,Position *playerPos);
+void initPokimac(Pokimac *pok);
 
 int main() {
 
@@ -39,21 +32,25 @@ int main() {
 
     srand(time(NULL)); //Initialiser le générateur de nombres aléatores
 
-    // On définie une position de départ au joueur et au pokimacs
+    // On définie une position de départ au joueur et aux pokimacs
     Position playerPos = {(rand() % hauteur + 1), (rand() % longueur + 1)};
     Position pokimacPos = {(rand() % hauteur + 1), (rand() % longueur + 1)};
     Position oldPos;
+    /*Position playerPos = {4,4}; //test avec des positions fixes
+    Position pokimacPos = {5,7};
+    Position oldPos;*/
 
     Pokimac pok1 ;
     string name = "Sasha" ;
 
-    initPlayer(joueur, pok1, playerPos);
+    //initPlayer(joueur, pok1, &playerPos); //à analyser car le programme s'arrete ici sinon
 
+    ConsoleUtils::clear();
     affichageTerrain(hauteur, longueur, pokimacPos, playerPos);
 
-    deplacement(&playerPos, &pokimacPos, &oldPos, hauteur, longueur) ;
+    deplacement(&playerPos, &pokimacPos, &oldPos, hauteur, longueur); //on n'arrive pas à se déplacer encore, les touches du clavier ne marche pas
 
-	consoleUtils::clear();
+	ConsoleUtils::clear();
 	return 0;
 }
 
@@ -69,7 +66,7 @@ void initPlayer(Joueur *joueur, Pokimac pok1,Position *playerPos){
 }
 
 //Initialiser pokimac
-void initPlayer(Pokimac *pok){
-    pok->nom =
+void initPokimac(Pokimac *pok){
+//    pok->nom =;
 }
 

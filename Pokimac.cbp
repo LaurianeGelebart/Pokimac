@@ -32,7 +32,15 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="affichageTerrain.cpp" />
+		<Unit filename="affichageTerrain.h" />
+		<Unit filename="consoleUtils.hpp" />
+		<Unit filename="declarations.h" />
+		<Unit filename="deplacement.cpp" />
+		<Unit filename="deplacement.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="menuDebut.cpp" />
+		<Unit filename="menuDebut.h" />
 		<Extensions>
 			<lib_finder disable_auto="1" />
 		</Extensions>
