@@ -14,7 +14,7 @@
 using namespace std;
 
 //Prototypes des fonctions
-void initPlayer(Joueur *joueur, Pokimac pok1,Position *playerPos);
+void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos);
 void initPokimac(Pokimac *pok);
 
 int main() {
@@ -43,10 +43,11 @@ int main() {
     Pokimac pok1 ;
     string name = "Sasha" ;
 
-    //initPlayer(joueur, pok1, &playerPos); //à analyser car le programme s'arrete ici sinon
+    initPlayer(joueur, pok1, name, playerPos); //à analyser car le programme s'arrete ici sinon
+    cout << joueur->nom ;
 
     ConsoleUtils::clear();
-    affichageTerrain(hauteur, longueur, pokimacPos, playerPos);
+   affichageTerrain(hauteur, longueur, pokimacPos, playerPos);
 
     deplacement(&playerPos, &pokimacPos, &oldPos, hauteur, longueur); //on n'arrive pas à se déplacer encore, les touches du clavier ne marche pas
 
@@ -55,14 +56,13 @@ int main() {
 }
 
 //Initialiser le joueur
-void initPlayer(Joueur *joueur, Pokimac pok1,Position *playerPos){
-    Inventaire *inventaireJ = new Inventaire;
-    inventaireJ->nbBaie = 5 ;
-    inventaireJ->nbPokiball = 10 ;
-    joueur->inventaire = *inventaireJ ;
-    joueur->equipe[1] = pok1 ;
-    joueur->nom = "Sasha" ;
-    joueur->position = *playerPos ;
+void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos){
+    joueur->inventaire.nbBaie = 5 ;
+    joueur->inventaire.nbPokiball = 10 ;
+    joueur->nom = name ;
+    joueur->position = playerPos ;
+    joueur->equipe = new Pokimac[20];
+    joueur->equipe[0] = pok1 ;
 }
 
 //Initialiser pokimac
