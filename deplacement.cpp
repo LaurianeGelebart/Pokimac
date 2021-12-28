@@ -8,31 +8,33 @@
 #include <iostream>
 #include "declarations.h"
 #include "deplacement.h"
+#include "afficheASCII.h"
 
+void combat(Joueur *joueur, Pokimac *pokRencontre);
+void affichePokimac(Pokimac *pok);
 
-
-void deplacement(Position *playerPos, Position *pokimacPos, int const hauteur, int const longueur,char* tab){
+void deplacement(Joueur *joueur, Pokimac *pok, int const hauteur, int const longueur,char* tab){
 
     Position oldPos; //ancienne position du joueur
 
     bool spaceHit = false;
 	while (!spaceHit) {
-		oldPos = *playerPos;
+		oldPos = joueur->position;
 		bool special = false;
         int c = ConsoleUtils::getChar(&special); // attend le caractere special
         if(special) {
             switch (c) {
                 case ConsoleUtils::KEY_UP:
-                    if(playerPos->y > 1) (playerPos->y)--;
+                    if(joueur->position.y > 1) (joueur->position.y)--;
                     break;
                 case ConsoleUtils::KEY_DOWN:
-                    if(playerPos->y < hauteur-2) (playerPos->y)++; //-2 eviter de sortir du tableau
+                    if(joueur->position.y < hauteur-2) (joueur->position.y)++; //-2 eviter de sortir du tableau
                     break;
                 case ConsoleUtils::KEY_LEFT:
-                    if(playerPos->x > 1) (playerPos->x)--; //-2 eviter de sortir du tableau
+                    if(joueur->position.x > 1) (joueur->position.x)--; //-2 eviter de sortir du tableau
                     break;
                 case ConsoleUtils::KEY_RIGHT:
-                    if(playerPos->x < longueur-2) (playerPos->x)++;
+                    if(joueur->position.x < longueur-2) (joueur->position.x)++;
                     break;
                 default: break;
             }
@@ -41,15 +43,30 @@ void deplacement(Position *playerPos, Position *pokimacPos, int const hauteur, i
 			spaceHit = true;
         }
 
-		if ((*playerPos).x != oldPos.x || (*playerPos).y != oldPos.y) {
+		if (joueur->position.x != oldPos.x || joueur->position.y != oldPos.y) {
 			ConsoleUtils::setCursorPos(oldPos.x, oldPos.y);
 			std::cout << tab[oldPos.y*longueur+oldPos.x]; // Clean
-			ConsoleUtils::setCursorPos((*playerPos).x, (*playerPos).y);
+			ConsoleUtils::setCursorPos(joueur->position.x, joueur->position.y);
 			std::cout << "@";
 		}
-		if (((*playerPos).x == (*pokimacPos).x) && ((*playerPos).y == (*pokimacPos).y) ){
-            ConsoleUtils::clear();
-            std::cout << "Combat" << std::endl;
+		if ((joueur->position.x == pok->position.x) && (joueur->position.y == pok->position.y) ){
+            combat(joueur, &joueur->equipe[0]);
 		}
 	}
+}
+
+void combat(Joueur *joueur, Pokimac *pokRencontre){
+    ConsoleUtils::clear();
+    std::cout << "Combat" << std::endl;
+    affichePokimac(pokRencontre) ;
+    affichePokimac(&(joueur->equipe[0]));
+}
+
+void affichePokimac(Pokimac *pok){
+    print_pokemon(pok->ascii) ;
+    cout << pok->nom << endl ;
+    cout << pok->espece << endl << endl ;
+    cout << "Force : " << pok->force << endl ;
+    cout << "Endurence : " << pok->endurance << endl ;
+    cout << "Défense : " << pok->defense << endl ;
 }

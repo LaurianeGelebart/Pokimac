@@ -18,7 +18,6 @@ using namespace std;
 //Prototypes des fonctions
 void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos);
 void initPokimac(Pokimac *pok, Position pokimacPos);
-void affichePokimac(Pokimac *pok);
 
 int main() {
 
@@ -45,21 +44,21 @@ int main() {
 
     Pokimac *pok1=new Pokimac; //premier pokemon dans l'equipe
     initPokimac(pok1, pokimacPos); // Fonctionnel mais ne crée que pikachu
-    affichePokimac(pok1); //affiche infos pokimac
+    //affichePokimac(pok1); //affiche infos pokimac
 
     string name = "Sacha" ;
     initPlayer(joueur, *pok1, name, playerPos); //corrigée par Lauriane, fonctionnel
 
 
-    //ConsoleUtils::clear();
+    ConsoleUtils::clear();
 
 
     while (true){ //trouver comment sortir du programme
 
 
-        //affichageTerrain(hauteur, longueur, tab, &pokimacPos, &playerPos);
-        //deplacement(&playerPos, &pokimacPos, hauteur, longueur,tab);
-        //ConsoleUtils::clear();
+        affichageTerrain(hauteur, longueur, tab, &pokimacPos, &playerPos);
+        deplacement(joueur, pok1, hauteur, longueur,tab);
+        ConsoleUtils::clear();
     }
     free(tab);
 	return 0;
@@ -79,7 +78,7 @@ void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos){
 void initPokimac(Pokimac *pok, Position pokimacPos){
     pok->nom = "Pikachu";
     pok->espece = "électrique";
-    pok->ascii = 4  ;
+    pok->ascii = 25  ;
     Attaque attaque1 ;
     Attaque attaque2 ;
     pok->attaque1 = attaque1 ;
@@ -90,14 +89,5 @@ void initPokimac(Pokimac *pok, Position pokimacPos){
     pok->position = pokimacPos ;
 }
 
-void affichePokimac(Pokimac *pok){
-    ConsoleUtils::clear();
-    print_pokemon(pok->ascii) ;//ne fonctionne pas encore
-    cout << pok->nom << endl ;
-    cout << pok->espece << endl << endl ;
-    cout << "Force : " << pok->force << endl ;
-    cout << "Endurence : " << pok->endurance << endl ;
-    cout << "Défense : " << pok->defense << endl ;
-}
 
 

@@ -22,7 +22,7 @@
 	<unistd.h>
 	<sys/ioctl.h>
 
-1640689275 c:\users\lauri\documents\imac\c++\pokimac\pokimac\declarations.h
+1640719162 c:\users\lauri\documents\imac\c++\pokimac\pokimac\declarations.h
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -40,7 +40,7 @@
 	<string>
 	<iostream>
 
-1640039133 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.cpp
+1640720461 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.cpp
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -50,8 +50,9 @@
 	<iostream>
 	"declarations.h"
 	"deplacement.h"
+	"afficheASCII.h"
 
-1640039133 c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.h
+1640718954 c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.h
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -79,7 +80,7 @@
 	<string>
 	<iostream>
 
-1640715189 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\main.cpp
+1640720431 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\main.cpp
 	"consoleUtils.hpp"
 	"declarations.h"
 	"affichageTerrain.h"
@@ -188,8 +189,8 @@
 	<string>
 	<iostream>
 
-1640695172 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
-	<stdio.h>
+1640715467 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
+	"afficheASCII.h"
 
 1640693926 c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
 	<stdio.h>
