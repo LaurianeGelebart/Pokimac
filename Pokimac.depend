@@ -31,7 +31,7 @@
 	<string>
 	<iostream>
 
-1640039133 c:\users\lauri\documents\imac\c++\pokimac\pokimac\affichageterrain.h
+1640715420 c:\users\lauri\documents\imac\c++\pokimac\pokimac\affichageterrain.h
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -79,13 +79,13 @@
 	<string>
 	<iostream>
 
-1640693650 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\main.cpp
+1640715189 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\main.cpp
 	"consoleUtils.hpp"
 	"declarations.h"
 	"affichageTerrain.h"
 	"deplacement.h"
 	"menuDebut.h"
-	"afficheASCII.cpp"
+	"afficheASCII.h"
 	<algorithm>
 	<cstdlib>
 	<cstdio>
@@ -188,9 +188,12 @@
 	<string>
 	<iostream>
 
-1640693926 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
+1640695172 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
 	<stdio.h>
 
 1640693926 c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
+	<stdio.h>
+
+1640715415 c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.h
 	<stdio.h>
 

@@ -5,14 +5,10 @@
 * And also generated with:
 *  - http://www.text-image.com
 */
-//ne fonctionne pas encore
-#ifndef __POKE_IMG__
-#define __POKE_IMG__
 
-#include <stdio.h>
-void print_pokemon(int n_pokemon);
+#include "afficheASCII.h"
 
-/*void print_pokemon(int n_pokemon) {
+void print_pokemon(int n_pokemon) {
     switch(n_pokemon) {
 case 1:
     printf("                                           /\n");
@@ -5895,6 +5891,3 @@ case 151:
 
     }
 }
-
-*/
-#endif
