@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1640008993 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\affichageterrain.cpp
+1640039133 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\affichageterrain.cpp
 	"consoleUtils.hpp"
 	"declarations.h"
 	"affichageTerrain.h"
@@ -22,7 +22,7 @@
 	<unistd.h>
 	<sys/ioctl.h>
 
-1640008993 c:\users\lauri\documents\imac\c++\pokimac\pokimac\declarations.h
+1640689275 c:\users\lauri\documents\imac\c++\pokimac\pokimac\declarations.h
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -31,7 +31,7 @@
 	<string>
 	<iostream>
 
-1640008993 c:\users\lauri\documents\imac\c++\pokimac\pokimac\affichageterrain.h
+1640039133 c:\users\lauri\documents\imac\c++\pokimac\pokimac\affichageterrain.h
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -40,7 +40,7 @@
 	<string>
 	<iostream>
 
-1640008993 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.cpp
+1640039133 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.cpp
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -51,7 +51,7 @@
 	"declarations.h"
 	"deplacement.h"
 
-1640008993 c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.h
+1640039133 c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.h
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -79,17 +79,19 @@
 	<string>
 	<iostream>
 
-1640011535 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\main.cpp
+1640693650 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\main.cpp
 	"consoleUtils.hpp"
 	"declarations.h"
 	"affichageTerrain.h"
 	"deplacement.h"
 	"menuDebut.h"
+	"afficheASCII.cpp"
 	<algorithm>
 	<cstdlib>
 	<cstdio>
 	<math.h>
 	<string>
+	<typeinfo>
 	<iostream>
 
 1640038430 source:c:\users\sophie\desktop\imac\prog\pokimac\pokimac\main.cpp
@@ -185,4 +187,10 @@
 	<math.h>
 	<string>
 	<iostream>
+
+1640693926 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
+	<stdio.h>
+
+1640693926 c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
+	<stdio.h>
 

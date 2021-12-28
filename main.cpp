@@ -3,6 +3,7 @@
 #include "affichageTerrain.h"
 #include "deplacement.h"
 #include "menuDebut.h"
+#include "afficheASCII.cpp"
 #include <algorithm>
 #include <cstdlib>
 #include <cstdio>
@@ -16,7 +17,7 @@ using namespace std;
 
 //Prototypes des fonctions
 void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos);
-void initPokimac(Pokimac *pok);
+void initPokimac(Pokimac *pok, Position pokimacPos);
 
 int main() {
 
@@ -41,11 +42,13 @@ int main() {
     Position pokimacPos = {5,7};
     Position oldPos;*/
 
-    Pokimac pok1 ; //premier pokemon dans l'equipe
-    string name = "Sasha" ;
+    Pokimac *pok1=new Pokimac; //premier pokemon dans l'equipe
+    initPokimac(pok1, pokimacPos); // Fonctionnel mais ne crée que pikachu
+    //print_pokemon(25) ;//ne fonctionne pas encore
 
-    initPlayer(joueur, pok1, name, playerPos); //corrigée par Laurianne, fonctionnel
-    cout << joueur->nom ;
+    string name = "Sacha" ;
+    initPlayer(joueur, *pok1, name, playerPos); //corrigée par Lauriane, fonctionnel
+
 
     ConsoleUtils::clear();
 
@@ -71,8 +74,19 @@ void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos){
     joueur->equipe[0] = pok1 ;
 }
 
-//Initialiser pokimac
-void initPokimac(Pokimac *pok){
-//    pok->nom =;
+//Initialiser pokimac 1
+void initPokimac(Pokimac *pok, Position pokimacPos){
+    pok->nom = "Pikachu";
+    pok->espece = "électrique";
+    pok->ascii = 4  ;
+    Attaque attaque1 ;
+    Attaque attaque2 ;
+    pok->attaque1 = attaque1 ;
+    pok->attaque2 = attaque2 ;
+    pok->defense = 25 ;
+    pok->endurance = 25 ;
+    pok->force = 25 ;
+    pok->position = pokimacPos ;
 }
+
 

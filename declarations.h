@@ -32,7 +32,7 @@ typedef struct Inventaire{
 
 typedef struct Pokimac{
     string espece ;
-    string ascii ;
+    int ascii ;
     string nom ;
     Attaque attaque1 ;
     Attaque attaque2 ;
