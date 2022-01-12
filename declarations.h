@@ -36,6 +36,7 @@ typedef struct Pokimac{
     string nom ;
     Attaque attaque1 ;
     Attaque attaque2 ;
+    int pv ;
     int endurance ;
     int force ;
     int defense ;
@@ -45,6 +46,7 @@ typedef struct Pokimac{
 typedef struct Joueur{
     string nom ;
     Pokimac* equipe ;
+    int nbPokimac ;
     Inventaire inventaire ;
     Position position ;
 } Joueur ;

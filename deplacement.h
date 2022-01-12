@@ -12,6 +12,6 @@
 #include <iostream>
 
 
-void deplacement(Joueur *joueur,  Pokimac *pok, int const hauteur, int const longueur,char* tab);
+void deplacement(Joueur *joueur, Pokimac *pokimacTerrain, int const hauteur, int const longueur,char* tab);
 
 #endif // DEPLACEMENT_H

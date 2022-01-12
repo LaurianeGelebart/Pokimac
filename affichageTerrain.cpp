@@ -10,7 +10,7 @@
 #include <iostream>
 
 
-void affichageTerrain(int const hauteur, int const longueur, char* tab, Position *pokimacPos, Position *playerPos){
+void affichageTerrain(int const hauteur, int const longueur, char* tab, Pokimac *pokimacTerrain, Position *playerPos){
 
 	//Remplir le tableau avec un pattern specifique
 	for (int j=0; j<hauteur; j++) {
@@ -30,6 +30,6 @@ void affichageTerrain(int const hauteur, int const longueur, char* tab, Position
 
 		ConsoleUtils::setCursorPos(playerPos->x, playerPos->y);
 		std::cout << '@'; // Output '@' at my position
-		ConsoleUtils::setCursorPos(pokimacPos->x, pokimacPos->y);
+		ConsoleUtils::setCursorPos(pokimacTerrain[0].position.x, pokimacTerrain[0].position.y);
 		std::cout << 'P'; // Output 'P' at position of Pokimac
 }

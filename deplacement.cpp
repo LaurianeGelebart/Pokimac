@@ -13,7 +13,7 @@
 void combat(Joueur *joueur, Pokimac *pokRencontre);
 void affichePokimac(Pokimac *pok);
 
-void deplacement(Joueur *joueur, Pokimac *pok, int const hauteur, int const longueur,char* tab){
+void deplacement(Joueur *joueur, Pokimac *pokimacTerrain, int const hauteur, int const longueur,char* tab){
 
     Position oldPos; //ancienne position du joueur
 
@@ -49,8 +49,8 @@ void deplacement(Joueur *joueur, Pokimac *pok, int const hauteur, int const long
 			ConsoleUtils::setCursorPos(joueur->position.x, joueur->position.y);
 			std::cout << "@";
 		}
-		if ((joueur->position.x == pok->position.x) && (joueur->position.y == pok->position.y) ){
-            combat(joueur, &joueur->equipe[0]);
+		if ((joueur->position.x == pokimacTerrain[0].position.x) && (joueur->position.y == pokimacTerrain[0].position.y) ){
+            combat(joueur, &pokimacTerrain[0]);
 		}
 	}
 }
@@ -70,3 +70,5 @@ void affichePokimac(Pokimac *pok){
     cout << "Endurence : " << pok->endurance << endl ;
     cout << "Défense : " << pok->defense << endl ;
 }
+
+

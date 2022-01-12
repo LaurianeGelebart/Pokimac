@@ -34,6 +34,7 @@
 		</Compiler>
 		<Unit filename="affichageTerrain.cpp" />
 		<Unit filename="affichageTerrain.h" />
+		<Unit filename="afficheASCII.cpp" />
 		<Unit filename="consoleUtils.hpp" />
 		<Unit filename="declarations.h" />
 		<Unit filename="deplacement.cpp" />
