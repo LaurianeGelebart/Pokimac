@@ -11,6 +11,6 @@
 
 #include <iostream>
 
-void affichageTerrain(int const hauteur, int const longueur, char* tab, Pokimac *pokimacTerrain, Position *playerPos);
+void affichageTerrain(int const hauteur, int const longueur, char* tab, Pokimac *pokimacTerrain, Position *playerPos, int nombrePokimac);
 
 #endif // AFFICHAGETERRAIN_H
