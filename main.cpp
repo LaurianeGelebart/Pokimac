@@ -4,7 +4,7 @@
 #include "deplacement.h"
 #include "menuDebut.h"
 #include "afficheASCII.h"
-#include "afficheASCII.h"
+#include "combat.h"
 
 
 #include <algorithm>
@@ -24,8 +24,6 @@ using namespace std;
 void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos);
 void initPokimac(Pokimac *pok);
 Pokimac * initPokimacTerrain(int nombre, int hauteur, int longueur);
-int combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac) ;
-void affichePokimac(Pokimac *pok);
 
 int main() {
 
@@ -45,17 +43,14 @@ int main() {
 
     // On définit une position de départ  au joueur et aux pokimacs (pas possible de spawner en dehors ou sur les murs de la grille
     Position playerPos = {(rand() * ((hauteur-1) - 1) / RAND_MAX + 1 ), (rand() * ((longueur-1) - 1) / RAND_MAX + 1 )};
-
-    /*Position playerPos = {4,4}; //test avec des positions fixes
-    Position pokimacPos = {5,7};
-    Position oldPos;*/
+    Position centerPos = {(rand() * ((hauteur-1) - 1) / RAND_MAX + 1 ), (rand() * ((longueur-1) - 1) / RAND_MAX + 1 )};
 
     Pokimac *pok1=new Pokimac; //premier pokemon dans l'equipe
     initPokimac(pok1); // Fonctionnel mais ne crée que pikachu
     //affichePokimac(pok1); //affiche infos pokimac
 
     string name = "Sacha" ;
-    initPlayer(joueur, *pok1, name, playerPos); //corrigée par Lauriane, fonctionnel
+    initPlayer(joueur, *pok1, name, playerPos); //Initialisation du joueur
 
     Pokimac *pokimacTerrain = initPokimacTerrain(nombrePokimac, hauteur, longueur); //Liste des pokimac du terrain
 
@@ -64,7 +59,7 @@ int main() {
     ConsoleUtils::clear();
 
 
-    affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &playerPos, nombrePokimac);
+    affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &playerPos, nombrePokimac, centerPos);
 
     while (joueur->nbPokimac != nombrePokimac){ //Tant que le joueur n'a pas 15 pokimacs --> on a pas gagné le jeu
         bool special = false;
@@ -80,6 +75,9 @@ int main() {
                 if ((oldPos.x == pokimacTerrain[i].position.x) && (oldPos.y == pokimacTerrain[i].position.y) ){
                     ConsoleUtils::setCursorPos(oldPos.x, oldPos.y);
                     std::cout << "P" ; // Affiche pokimac
+                }else if ((oldPos.x == centerPos.x) && (oldPos.y == centerPos.y) ){
+                    ConsoleUtils::setCursorPos(oldPos.x, oldPos.y);
+                    std::cout << "C" ; // Affiche centre pokimac
                 }else {
                     ConsoleUtils::setCursorPos(oldPos.x, oldPos.y);
                     std::cout << tab[oldPos.y*longueur+oldPos.x]; // Affiche ce qu'il y avait à l'ancienne position du joueur --> Clean
@@ -90,9 +88,12 @@ int main() {
 		}
 		for (int i=0 ; i<nombrePokimac ; i++){
             if ((joueur->position.x == pokimacTerrain[i].position.x) && (joueur->position.y == pokimacTerrain[i].position.y) ){ // Si même position qu'un pokimac
-                combat(joueur, &pokimacTerrain[i], hauteur, longueur, tab, pokimacTerrain, nombrePokimac);
+                combat(joueur, &pokimacTerrain[i], hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
             }
 		}
+		if ((joueur->position.x == centerPos.x) && (joueur->position.y == centerPos.y) ){ // Si même position que le centre
+                // Fonction du centre
+            }
 
     }
     free(tab);
@@ -142,79 +143,10 @@ Pokimac * initPokimacTerrain(int nombre, int hauteur, int longueur){
         pokimacTerrain[i].defense = rand() % 100 + 1 ;
         pokimacTerrain[i].endurance = rand() % 100 + 1 ;
         pokimacTerrain[i].force = rand() % 100 + 1 ;
+        pokimacTerrain[i].confiance = rand() % 100 + 1 ;
         pokimacTerrain[i].pv = 100 ;
         pokimacTerrain[i].position = {(rand() * ((hauteur-1) - 1) / RAND_MAX + 1 ), (rand() * ((longueur-1) - 1) / RAND_MAX + 1 )};
     }
     return pokimacTerrain ;
 }
-
-int combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac){
-    ConsoleUtils::clear();
-    std::cout << "Combat" << std::endl;
-    int choix ;
-    //affichePokimac(pokRencontre) ;
-    //affichePokimac(&(joueur->equipe[0]));
-    cout << "1-Attaquer 2-Capturer 3-Donner une baie 4-Fuir 5-Inventaire:" << endl ;
-    cin >> choix ;
-    switch (choix) {
-        case 1 :
-            //Attaque
-        break ;
-        case 2 :
-            if (joueur->inventaire.nbPokiball > 0){ //Le pokimac est capturé
-               cout << "Vous lancez une pokiball sur " << pokRencontre->nom << endl ;
-               joueur->inventaire.nbPokiball -- ;
-               int reussite = rand() % 100 + 0 ;
-               if (reussite>50){
-                cout << "Bravo ! "<< pokRencontre->nom << " fait parti de votre équipe" << endl ;
-                joueur->nbPokimac ++ ;
-                joueur->equipe[joueur->nbPokimac] = *pokRencontre ;
-                pokRencontre->position.x = -1000 ;
-                pokRencontre->position.y = -1000 ;
-                cout << joueur-> equipe[joueur->nbPokimac].position.x ; // C'est là qu'est le problème...
-                sleep(3) ;
-                ConsoleUtils::clear();
-                affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac);
-                return 0 ;
-               }else { // Le pokimac ne rentre pas
-                cout << "Dommage..." << pokRencontre->nom << " est trop fort pour vous..." << endl ;
-                sleep(3) ;
-                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac);
-               }
-            }else { // Il n'y a pas de pokiball dans l'inventaire
-                sleep(3) ;
-                cout << "Vous n'avez pas assez de pokiball !" ;
-                ConsoleUtils::clear();
-                affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac);
-                return 0 ;
-            }
-        break ;
-        case 3 :
-            //Baie
-        break ;
-        case 4 :
-            cout << "Vous avez décidé de fuir" << endl ;
-            sleep(3) ;
-            ConsoleUtils::clear();
-            affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac);
-            return 0 ;
-        break ;
-        case 5 :
-            //Inventaire
-        break ;
-        default: break;
-    }
-    return 0 ;
-}
-
-
-void affichePokimac(Pokimac *pok){
-    print_pokemon(pok->ascii) ;
-    cout << pok->nom << endl ;
-    cout << pok->espece << endl << endl ;
-    cout << "Force : " << pok->force << endl ;
-    cout << "Endurence : " << pok->endurance << endl ;
-    cout << "Défense : " << pok->defense << endl ;
-}
-
 

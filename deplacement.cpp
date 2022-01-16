@@ -1,13 +1,4 @@
-#include "consoleUtils.hpp"
-
-#include <algorithm>
-#include <cstdlib>
-#include <cstdio>
-#include <math.h>
-#include <string>
-#include <iostream>
-#include "declarations.h"
-#include "deplacement.h"
+#include "combat.h"
 
 
 void deplacement(Joueur *joueur, int const hauteur, int const longueur,char* tab, int c){

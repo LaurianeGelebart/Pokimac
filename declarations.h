@@ -41,6 +41,7 @@ typedef struct Pokimac{
     int force ;
     int defense ;
     Position position ;
+    int confiance ; // = envie de rentrer dans la pokiball
 } Pokimac ;
 
 typedef struct Joueur{
