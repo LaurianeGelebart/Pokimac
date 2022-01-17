@@ -35,6 +35,9 @@
 		<Unit filename="affichageTerrain.cpp" />
 		<Unit filename="affichageTerrain.h" />
 		<Unit filename="afficheASCII.cpp" />
+		<Unit filename="afficheASCII.h" />
+		<Unit filename="combat.cpp" />
+		<Unit filename="combat.h" />
 		<Unit filename="consoleUtils.hpp" />
 		<Unit filename="declarations.h" />
 		<Unit filename="deplacement.cpp" />

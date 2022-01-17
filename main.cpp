@@ -30,6 +30,7 @@ int main() {
     int longueur = 0;
     int hauteur = 0;
     int nombrePokimac = 0 ;
+    int Arret = 1;
 
     Joueur *joueur=new Joueur;
 
@@ -61,7 +62,7 @@ int main() {
 
     affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &playerPos, nombrePokimac, centerPos);
 
-    while (joueur->nbPokimac != nombrePokimac){ //Tant que le joueur n'a pas 15 pokimacs --> on a pas gagné le jeu
+    while (joueur->nbPokimac <= nombrePokimac && Arret != 0){ //Tant que le joueur n'a pas 15 pokimacs --> on a pas gagné le jeu
         bool special = false;
         Position oldPos ;
         oldPos = joueur->position;
@@ -88,11 +89,17 @@ int main() {
 		}
 		for (int i=0 ; i<nombrePokimac ; i++){
             if ((joueur->position.x == pokimacTerrain[i].position.x) && (joueur->position.y == pokimacTerrain[i].position.y) ){ // Si même position qu'un pokimac
-                combat(joueur, &pokimacTerrain[i], hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                Arret = combat(joueur, &pokimacTerrain[i], hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                //cout << Arret <<endl;
             }
 		}
 		if ((joueur->position.x == centerPos.x) && (joueur->position.y == centerPos.y) ){ // Si même position que le centre
                 // Fonction du centre
+                for (int i=0;i<(joueur->nbPokimac);i++){
+                    (joueur->equipe[i]).pv = 100; // soigne entierement les pokemon de l'equipe du joueur
+                    joueur->inventaire.nbPokiball = 15;
+                    joueur->inventaire.nbBaie = 10;
+                }
             }
 
     }
@@ -116,11 +123,13 @@ void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos){
 void initPokimac(Pokimac *pok){
     pok->nom = "Pikachu";
     pok->espece = "électrique";
-    pok->ascii = 25  ;
+    pok->ascii = 1 ;
     Attaque attaque1 ;
     Attaque attaque2 ;
-    pok->attaque1 = attaque1 ;
-    pok->attaque2 = attaque2 ;
+    pok->attaque1.nom = "Eclair";
+    pok->attaque1.puissance = rand() % 100 + 1 ;
+    pok->attaque2.nom = "Tonnerre" ;
+    pok->attaque2.puissance = rand() % 100 + 1 ;
     pok->defense = 25 ;
     pok->endurance = 25 ;
     pok->force = 25 ;
@@ -135,11 +144,13 @@ Pokimac * initPokimacTerrain(int nombre, int hauteur, int longueur){
     for (int i=0 ; i<nombre ; i++){
         pokimacTerrain[i].nom = "McLuhan";
         pokimacTerrain[i].espece = "électrique";
-        pokimacTerrain[i].ascii = i+1  ;
+        pokimacTerrain[i].ascii = 4  ;
         Attaque attaque1 ;
         Attaque attaque2 ;
-       // pokimacTerrain[i].attaque1 = attaque1 ;
-       // pokimacTerrain[i].attaque2 = attaque2 ;
+        pokimacTerrain[i].attaque1.nom = "Message";
+        pokimacTerrain[i].attaque1.puissance = rand() % 100 + 1;
+        pokimacTerrain[i].attaque2.nom = "Medium" ;
+        pokimacTerrain[i].attaque2.puissance = rand() % 100 + 1;
         pokimacTerrain[i].defense = rand() % 100 + 1 ;
         pokimacTerrain[i].endurance = rand() % 100 + 1 ;
         pokimacTerrain[i].force = rand() % 100 + 1 ;

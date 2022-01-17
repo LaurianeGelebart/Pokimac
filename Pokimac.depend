@@ -227,3 +227,135 @@
 	<Windows.h>
 	<unistd.h>
 
+1642420463 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\affichageterrain.cpp
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642254522 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\consoleutils.hpp
+	<iostream>
+	<string>
+	<cstdio>
+	<chrono>
+	<thread>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+
+1642351841 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\declarations.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642351841 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\affichageterrain.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642249469 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\afficheascii.cpp
+	<stdio.h>
+	"afficheASCII.h"
+
+1642254522 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\afficheascii.h
+	<stdio.h>
+
+1642420520 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\combat.cpp
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	"deplacement.h"
+	"menuDebut.h"
+	"afficheASCII.h"
+	"afficheASCII.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<typeinfo>
+	<Windows.h>
+	<unistd.h>
+	<iostream>
+
+1642254522 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\deplacement.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642254522 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\menudebut.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642351841 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\deplacement.cpp
+	"combat.h"
+
+1642351841 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\combat.h
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	"deplacement.h"
+	"menuDebut.h"
+	"afficheASCII.h"
+	"combat.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<typeinfo>
+	<Windows.h>
+	<unistd.h>
+
+1642254522 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\menudebut.cpp
+	"consoleUtils.hpp"
+	"menuDebut.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642421147 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\main.cpp
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	"deplacement.h"
+	"menuDebut.h"
+	"afficheASCII.h"
+	"combat.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<typeinfo>
+	<Windows.h>
+	<unistd.h>
+	<iostream>
+
