@@ -24,7 +24,7 @@ void affichePokimac(Pokimac *pok);
 
 using namespace std;
 
-int combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac, Position centerPos){
+bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac, Position centerPos){
     ConsoleUtils::clear();
     bool SomeoneAlive=false;
 
@@ -35,152 +35,159 @@ int combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, cha
             }
             if(SomeoneAlive){
 
-    cout << "Un " << pokRencontre->nom << " apparait !" << endl << "Que voulez-vous faire ?" <<endl;
-    int choix ;
-    affichePokimac(pokRencontre) ;
-    //affichePokimac(&(joueur->equipe[0]));
-    cout << "1-Attaquer 2-Capturer 3-Donner une baie 4-Tentative de seduction 5-Fuir 6-Inventaire:" << endl ;
-    cin >> choix ;
-    switch (choix) {
-        case 1 :
-            {
-
-            //Attaque
-
-                    bool Alive = false;
-                    int choixPokimac;
-                    do
-                    {
-                            cout << "Quel pokimac voulez-vous déployer ?" << endl;
-                            for (int i=0;i<(joueur->nbPokimac);i++){
-                            cout << i+1 << "-" << joueur->equipe[i].nom << endl;
-                            }
-                            cin >> choixPokimac;
-                            choixPokimac -= 1;
-                            if((joueur->equipe[choixPokimac].pv) <= 0){
-                                cout << joueur->equipe[choixPokimac].nom << " est K.O., choisis en un autre !" << endl;
-                            }
-                            else{
-                                Alive=true;
-                            }
-                    }
-                    while (!Alive);
-                cout << joueur->equipe[choixPokimac].nom << " en avant !" << endl;
-                cout << "Que dois-faire " << joueur->equipe[choixPokimac].nom << " ?" << endl;
-                cout << "1- " << joueur->equipe[choixPokimac].attaque1.nom <<endl;
-                cout << "2- " << joueur->equipe[choixPokimac].attaque2.nom <<endl;
-                int choixAttaque;
-                cin >> choixAttaque;
-                    if (choixAttaque==1){
-                         cout << joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque1.nom << endl;
-                         pokRencontre->pv = (pokRencontre->pv) - (joueur->equipe[choixPokimac].attaque1.puissance);
-                    }
-                    else{
-                        cout << joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque2.nom << endl;
-                        pokRencontre->pv = (pokRencontre->pv) - (joueur->equipe[choixPokimac].attaque2.puissance);
-                    }
-                ConsoleUtils::clear();
+                cout << "Un " << pokRencontre->nom << " apparait !" << endl;
+                int choix ;
                 affichePokimac(pokRencontre);
-                int choixAttaquePokrencontre = rand() % 2 + 1;
-                    if (choixAttaquePokrencontre==1){
-                             cout << pokRencontre->nom << " utilise " << pokRencontre->attaque1.nom << endl;
-                             joueur->equipe[choixPokimac].pv = (joueur->equipe[choixPokimac].pv) - (pokRencontre->attaque1.puissance);
+                cout << "Que voulez-vous faire ?" <<endl;
+                cout << "1-Attaquer 2-Capturer 3-Donner une baie 4-Tentative de seduction 5-Fuir 6-Inventaire:" << endl ;
+                cin >> choix ;
+                switch (choix) {
+                    case 1 :
+                        {
+
+                        //Attaque
+
+                                bool Alive = false;
+                                int choixPokimac;
+                                do
+                                {
+                                        cout << "Quel pokimac voulez-vous déployer ?" << endl;
+                                        for (int i=0;i<(joueur->nbPokimac);i++){
+                                        cout << i+1 << "-" << joueur->equipe[i].nom << endl;
+                                        }
+                                        cin >> choixPokimac;
+                                        choixPokimac -= 1;
+                                        if((joueur->equipe[choixPokimac].pv) <= 0){
+                                            cout << joueur->equipe[choixPokimac].nom << " est K.O., choisis en un autre !" << endl;
+                                        }
+                                        else{
+                                            Alive=true;
+                                        }
+                                }
+                                while (!Alive);
+                            cout << joueur->equipe[choixPokimac].nom << " en avant !" << endl;
+                            cout << "Que dois-faire " << joueur->equipe[choixPokimac].nom << " ?" << endl;
+                            cout << "1- " << joueur->equipe[choixPokimac].attaque1.nom <<endl;
+                            cout << "2- " << joueur->equipe[choixPokimac].attaque2.nom <<endl;
+                            int choixAttaque;
+                            cin >> choixAttaque;
+                                if (choixAttaque==1){
+                                     cout << joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque1.nom << endl;
+                                     pokRencontre->pv = (pokRencontre->pv) - (joueur->equipe[choixPokimac].attaque1.puissance);
+                                }
+                                else{
+                                    cout << joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque2.nom << endl;
+                                    pokRencontre->pv = (pokRencontre->pv) - (joueur->equipe[choixPokimac].attaque2.puissance);
+                                }
+                                //cout <<
+                            sleep(3);
+                            ConsoleUtils::clear();
+                            affichePokimac(pokRencontre);
+                            int choixAttaquePokrencontre = rand() % 2 + 1;
+                                if (choixAttaquePokrencontre==1){
+                                         cout << pokRencontre->nom << " utilise " << pokRencontre->attaque1.nom << endl;
+                                         joueur->equipe[choixPokimac].pv = (joueur->equipe[choixPokimac].pv) - (pokRencontre->attaque1.puissance);
+                                    }
+                                    else{
+                                        cout << pokRencontre->nom << " utilise " << pokRencontre->attaque2.nom << endl;
+                                        joueur->equipe[choixPokimac].pv = (joueur->equipe[choixPokimac].pv) - (pokRencontre->attaque2.puissance);
+                                    }
+                                    sleep(5);
+                                    affichePokimac(&(joueur->equipe[choixPokimac]));
+                            sleep(5);
+                            ConsoleUtils::clear();
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            return false ;
                         }
-                        else{
-                            cout << pokRencontre->nom << " utilise " << pokRencontre->attaque2.nom << endl;
-                            joueur->equipe[choixPokimac].pv = (joueur->equipe[choixPokimac].pv) - (pokRencontre->attaque2.puissance);
+
+                    break ;
+
+
+                    case 2 : // Lancer une pokiball
+                        {
+
+                        if (joueur->inventaire.nbPokiball > 0){ //Le pokimac est capturé
+                           cout << "Vous lancez une pokiball sur " << pokRencontre->nom << endl ;
+                           joueur->inventaire.nbPokiball -- ;
+                               if (pokRencontre->confiance>50 || pokRencontre->pv<30){
+                                    cout << "Bravo ! "<< pokRencontre->nom << " fait parti de votre équipe" << endl ;
+                                    joueur->nbPokimac ++ ;
+                                    joueur->equipe[(joueur->nbPokimac)-1] = *pokRencontre ; // A
+                                    pokRencontre->position.x = longueur+2; // Pour faire disparaitre le pokiamc
+                                    pokRencontre->position.y = hauteur+2;
+                                    sleep(3) ;
+                                    ConsoleUtils::clear();
+                                    affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac, centerPos);
+                                return false ;
+                               }else { // Le pokimac ne rentre pas
+                                cout << "Dommage..." << pokRencontre->nom << " est trop fort pour vous..." << endl ;
+                                sleep(3) ;
+                                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                               }
+                        }else { // Il n'y a pas de pokiball dans l'inventaire
+                            sleep(3) ;
+                            cout << "Vous n'avez pas assez de pokiball !" ;
+                            ConsoleUtils::clear();
+                            affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac, centerPos);
                         }
-                        affichePokimac(&(joueur->equipe[choixPokimac]));
-                sleep(3);
-                ConsoleUtils::clear();
-                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
-            }
+                        return false ;
+                        }
+                    break ;
+                    case 3 : //Donner une baie
+                        {
+                        if (joueur->inventaire.nbBaie>0){
+                            cout << "Vous donnez une baie à " << pokRencontre->nom << endl ;
+                            joueur->inventaire.nbBaie -- ;
+                            pokRencontre->confiance = pokRencontre->confiance + 6 ;
+                            sleep(3) ;
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                        } else {
+                            cout << "Vous n'avez plus de baies... " << endl;
+                            sleep(3) ;
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            return false;
+                        }
+                        return false ;
+                        }
+                    break ;
 
-        break ;
-
-
-        case 2 : // Lancer une pokiball
-            {
-
-            if (joueur->inventaire.nbPokiball > 0){ //Le pokimac est capturé
-               cout << "Vous lancez une pokiball sur " << pokRencontre->nom << endl ;
-               joueur->inventaire.nbPokiball -- ;
-               if (pokRencontre->confiance>50 || pokRencontre->pv<30){
-                cout << "Bravo ! "<< pokRencontre->nom << " fait parti de votre équipe" << endl ;
-                joueur->nbPokimac ++ ;
-                joueur->equipe[(joueur->nbPokimac)-1] = *pokRencontre ; // A
-                pokRencontre->position.x = longueur+2; // Pour faire disparaitre le pokiamc
-                pokRencontre->position.y = hauteur+2;
-                sleep(3) ;
-                ConsoleUtils::clear();
-                affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac, centerPos);
-                return 1 ;
-               }else { // Le pokimac ne rentre pas
-                cout << "Dommage..." << pokRencontre->nom << " est trop fort pour vous..." << endl ;
-                sleep(3) ;
-                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
-               }
-            }else { // Il n'y a pas de pokiball dans l'inventaire
-                sleep(3) ;
-                cout << "Vous n'avez pas assez de pokiball !" ;
-                ConsoleUtils::clear();
-                affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac, centerPos);
-                return 1 ;
-            }
-            }
-        break ;
-        case 3 : //Donner une baie
-            {
-            if (joueur->inventaire.nbBaie>0){
-                cout << "Vous donnez une baie à " << pokRencontre->nom << endl ;
-                joueur->inventaire.nbBaie -- ;
-                pokRencontre->confiance = pokRencontre->confiance + 6 ;
-                sleep(3) ;
-                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
-            } else {
-                cout << "Vous n'avez plus de baies... " << endl;
-                sleep(3) ;
-                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
-            }
-            }
-        break ;
-
-        case 4 : //Séduire
-            {
-            seduire(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
-            return 1 ;
-            }
-        break ;
-        case 5 : //Fuir
-            {
-            cout << "Vous avez decide de fuir" << endl ;
-            sleep(3) ;
-            ConsoleUtils::clear();
-            affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac, centerPos);
-            return 1;
-            }
-        break ;
-        case 6 :
-            {
-            //Inventaire
-            }
-        break ;
-        default: break;
-        }
+                    case 4 : //Séduire
+                        {
+                        seduire(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                        return false ;
+                        }
+                    break ;
+                    case 5 : //Fuir
+                        {
+                        cout << "Vous avez decide de fuir" << endl ;
+                        sleep(3) ;
+                        ConsoleUtils::clear();
+                        affichageTerrain(hauteur, longueur, tab, pokimacTerrain, &(joueur->position), nombrePokimac, centerPos);
+                        return false;
+                        }
+                    break ;
+                    case 6 :
+                        {
+                        //Inventaire
+                        return false;
+                        }
+                    break ;
+                    default: break;
+                    }
     }
     else{
-        cout << "Tous vos Pokimacs sont K.O. :'(" <<endl;
-        return 0;
+        cout << "Tous vos Pokimacs sont K.O. :'(" << endl;
+        //return true;
         }
-    return 0;
+return true;
 }
 
 
 void affichePokimac(Pokimac *pok){
     print_pokemon(pok->ascii) ;
-    cout << pok->nom << endl ;
-    cout << pok->espece << endl << endl ;
-    cout << "PV :" << pok->pv << endl;
+    cout << "Nom : " << pok->nom << endl ;
+    cout << "Espece : " <<pok->espece << endl << endl ;
+    cout << "PV : " << pok->pv << endl;
     cout << "Force : " << pok->force << endl ;
     cout << "Endurance : " << pok->endurance << endl ;
     cout << "Défense : " << pok->defense << endl << endl ;

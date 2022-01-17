@@ -32,6 +32,8 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
+		<Unit filename="Accueil.cpp" />
+		<Unit filename="Accueil.h" />
 		<Unit filename="affichageTerrain.cpp" />
 		<Unit filename="affichageTerrain.h" />
 		<Unit filename="afficheASCII.cpp" />

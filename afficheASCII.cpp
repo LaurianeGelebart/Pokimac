@@ -3,7 +3,7 @@
 
 void print_pokemon(int n_pokemon) {
     switch(n_pokemon) {
-case 1:
+case 8:
     printf("                          .\n");
     printf("  %&                   &&&&\n");
     printf(" *&&&               &&&&&&#\n");
@@ -26,7 +26,7 @@ case 1:
 
     break;
 
-case 2:
+case 7:
     printf("    ,((((((((((\n");
     printf("     ((((((/((((\n");
     printf("    ((((((( @@,((\n");
@@ -72,7 +72,7 @@ case 3:
 
     break;
 
-case 4:
+case 2:
     printf("        .((,\n");
     printf("     .(((( ((((((((((((,(\n");
     printf("     *(((((*(((((((((((((((       .*\n");
@@ -92,7 +92,7 @@ case 4:
     break;
 
 
-case 5:
+case 6:
     printf("               ,,,,,,..,,,,,,.,,,,,,.\n");
     printf("               ,,,@@@@@@@@@@@@@@@ ,,.\n");
     printf("               ,.@@@@@%@@@@@,@@@@@@,,\n");
@@ -111,7 +111,7 @@ case 5:
 
     break;
 
-case 6:
+case 5:
     printf("          ,,  ,\n");
     printf("     /&.,,,,,,\n");
     printf("     %,,,,.%&&&&/\n");
@@ -134,7 +134,7 @@ case 6:
 
     break;
 
-case 7:
+case 4:
     printf("                       &\n");
     printf("                     &&&\n");
     printf("                   &&&%%\n");
@@ -157,7 +157,7 @@ case 7:
 
     break;
 
-case 8:
+case 1:
     printf("                    ///,/\n");
     printf("                  /*//// //          ,//\n");
     printf("                    ,//// //      //*/.\n");

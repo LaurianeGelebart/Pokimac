@@ -3,7 +3,7 @@
 
 void deplacement(Joueur *joueur, int const hauteur, int const longueur,char* tab, int c){
 
-    Position oldPos; //ancienne position du joueur
+//    Position oldPos; //ancienne position du joueur
 
    /* bool spaceHit = false;
 	while (!spaceHit) { */
