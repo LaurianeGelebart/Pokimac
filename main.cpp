@@ -7,8 +7,7 @@
 #include "afficheASCII.h"
 #include "combat.h"
 #include "Victoire.h"
-
-
+#include "Defaite.h"
 
 #include <algorithm>
 #include <cstdlib>
@@ -112,17 +111,15 @@ int main() {
                 ConsoleUtils::clear();
                 affichageTerrain(hauteur, longueur, tab, pokimacTerrain, (&(joueur->position)), nombrePokimac, centerPos);
             }
-        //cout << Arret << endl;
     }
     ConsoleUtils::clear();
     if(Arret){
-        cout << "Tu as perdu" << endl;
+        Defaite();
     }
     else{
         Victoire();
     }
     free(tab);
-
     return 0;
 }
 
@@ -165,7 +162,7 @@ Pokimac * initPokimacTerrain(int nombre, int hauteur, int longueur){
     string NomPokimac[10] = {"Jean Wailmer","Walter Benbizarre","John Carapuce","Rita Minidraco","Alan Turoucool","Jean-Christophe Avertikodin","Philippe Starcklameche","Nam June Paikachu","Frieder Nakevoli","Gutenberlektek"};
     string EspecePokimac[10] = {"Designer","Sociologue","Musicien","Musicien","Scientifique","Animateur","Designer","Artiste","Artiste","Typographe"};
     string Attaque1Pokimac[10] ={"Pompidou","Reproductibilite","Silence","Marcia","Christopher","Saute-Mouton","Chaise","Fluxus","Matrice","Helvetica"};
-    string Attaque2Pokimac[10] ={"Panneau autoroutier","Anti-Capitalisme","4'33","Andy","Enigma","Ubu Roi","Lumière","TV","Couleur","Impression"};
+    string Attaque2Pokimac[10] ={"Panneau autoroutier","Anti-Capitalisme","4'33","Andy","Enigma","Ubu Roi","Lumiere","TV","Couleur","Impression"};
 
     for (int i=0 ; i<nombre ; i++){
         pokimacTerrain[i].nom = NomPokimac[i];

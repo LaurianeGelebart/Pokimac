@@ -1,7 +1,7 @@
-#ifndef VICTOIRE_H
-#define VICTOIRE_H
+#ifndef DEFAITE_H
+#define DEFAITE_H
 
-void Victoire();
+void Defaite();
 
 #endif
 

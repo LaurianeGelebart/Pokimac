@@ -38,7 +38,7 @@ void menuDebut(int* longueur, int* hauteur, int* nombre, string* nom) {
     cin >> *nom ;
     valid = false ;
     while(!valid){
-        cout << "Combien de Pokimac voulez-vous attraper pour gagner le partie (10 max) ?" ;
+        cout << "Combien de Pokimac voulez-vous attraper pour gagner la partie (10 max) ?" ;
         cin >> *nombre ;
         if (*nombre>0 && *nombre<11){
             valid = true ;
