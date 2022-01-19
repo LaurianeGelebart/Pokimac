@@ -19,7 +19,7 @@
 #include <Windows.h>
 #include <unistd.h>
 
-bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac, Position centerPos) ;
+bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac, Position centerPos, int oldPokimac) ;
 void affichePokimac(Pokimac *pok);
 
 

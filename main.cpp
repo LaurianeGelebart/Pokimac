@@ -6,6 +6,7 @@
 #include "menuDebut.h"
 #include "afficheASCII.h"
 #include "combat.h"
+#include "Victoire.h"
 
 
 
@@ -32,13 +33,15 @@ int main() {
     int longueur = 0;
     int hauteur = 0;
     int nombrePokimac = 0 ;
+    int oldPokimac = 0;
     bool Arret = false;
+    string name;
 
     Joueur *joueur=new Joueur;
     Accueil();
     ConsoleUtils::clear();
     // On affiche le menu
-    menuDebut(&longueur, &hauteur, &nombrePokimac);
+    menuDebut(&longueur, &hauteur, &nombrePokimac, &name);
     // On alloue le tableau 1D
     int NombreDeCases = longueur*hauteur ;
     char* tab = (char*)malloc(sizeof(char)*NombreDeCases);
@@ -53,7 +56,6 @@ int main() {
     initPokimac(pok1); // Fonctionnel mais ne crée que pikachu
     //affichePokimac(pok1); //affiche infos pokimac
 
-    string name = "Sacha" ;
     initPlayer(joueur, *pok1, name, playerPos); //Initialisation du joueur
 
     Pokimac *pokimacTerrain = initPokimacTerrain(nombrePokimac, hauteur, longueur); //Liste des pokimac du terrain
@@ -92,7 +94,7 @@ int main() {
 		}
 		for (int i=0 ; i<nombrePokimac ; i++){
             if ((joueur->position.x == pokimacTerrain[i].position.x) && (joueur->position.y == pokimacTerrain[i].position.y) ){ // Si même position qu'un pokimac
-                Arret = combat(joueur, &pokimacTerrain[i], hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                Arret = combat(joueur, &pokimacTerrain[i], hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
             }
 		}
 		if ((joueur->position.x == centerPos.x) && (joueur->position.y == centerPos.y) ){ // Si même position que le centre
@@ -117,7 +119,7 @@ int main() {
         cout << "Tu as perdu" << endl;
     }
     else{
-        cout << "Bravo ! Tu as gagné !" << endl;
+        Victoire();
     }
     free(tab);
 
@@ -139,16 +141,16 @@ void initPlayer(Joueur *joueur, Pokimac pok1, string name, Position playerPos){
 void initPokimac(Pokimac *pok){
     pok->nom = "Marshall McMystherbe";
     pok->espece = "Sociologue";
-    pok->ascii = 1 ;
+    pok->ascii = 11 ;
     Attaque attaque1 ;
     Attaque attaque2 ;
     pok->attaque1.nom = "Medium";
-    pok->attaque1.puissance = rand() % 100 + 1 ;
+    pok->attaque1.puissance = 0 ;
     pok->attaque2.nom = "Message" ;
-    pok->attaque2.puissance = rand() % 100 + 1 ;
-    pok->defense = 25 ;
-    pok->endurance = 25 ;
-    pok->force = 25 ;
+    pok->attaque2.puissance = 0 ;
+    pok->defense = 70 ;
+    pok->endurance = 70 ;
+    pok->force = 65 ;
     pok->pv = 100 ;
    // pok->position = pokimacPos ; Lui mettre une position hors du terrain il est déjà dans notre équipe
 }
@@ -160,10 +162,10 @@ Pokimac * initPokimacTerrain(int nombre, int hauteur, int longueur){
     pokimacTerrain =new Pokimac[nombre];
 
     //Tableau des caractéristiques
-    string NomPokimac[10] = {"Marshall McMystherbe","Walter Benbizarre","John Carapuce","Rita Minidraco","Alan Turoucool","Jean-Christophe Avertikodin","Philippe Starcklameche","Nam June Paikachu","Frieder Nakevoli","Gutenberlektek"};
-    string EspecePokimac[10] = {"Sociologue","Sociologue","Musicien","Musicien","Scientifique","Animateur","Designer","Artiste","Artiste","Typographe"};
-    string Attaque1Pokimac[10] ={"Medium","Reproductibilite","Silence","Marcia","Christopher","Saute-Mouton","Chaise","Fluxus","Matrice","Helvetica"};
-    string Attaque2Pokimac[10] ={"Message","Anti-Capitalisme","4'33","Andy","Enigma","Ubu Roi","Lumière","TV","Couleur","Impression"};
+    string NomPokimac[10] = {"Jean Wailmer","Walter Benbizarre","John Carapuce","Rita Minidraco","Alan Turoucool","Jean-Christophe Avertikodin","Philippe Starcklameche","Nam June Paikachu","Frieder Nakevoli","Gutenberlektek"};
+    string EspecePokimac[10] = {"Designer","Sociologue","Musicien","Musicien","Scientifique","Animateur","Designer","Artiste","Artiste","Typographe"};
+    string Attaque1Pokimac[10] ={"Pompidou","Reproductibilite","Silence","Marcia","Christopher","Saute-Mouton","Chaise","Fluxus","Matrice","Helvetica"};
+    string Attaque2Pokimac[10] ={"Panneau autoroutier","Anti-Capitalisme","4'33","Andy","Enigma","Ubu Roi","Lumière","TV","Couleur","Impression"};
 
     for (int i=0 ; i<nombre ; i++){
         pokimacTerrain[i].nom = NomPokimac[i];
@@ -172,13 +174,13 @@ Pokimac * initPokimacTerrain(int nombre, int hauteur, int longueur){
         Attaque attaque1;
         Attaque attaque2;
         pokimacTerrain[i].attaque1.nom = Attaque1Pokimac[i];
-        pokimacTerrain[i].attaque1.puissance = rand() % 100 + 1;
+        pokimacTerrain[i].attaque1.puissance = 0;
         pokimacTerrain[i].attaque2.nom = Attaque2Pokimac[i];
-        pokimacTerrain[i].attaque2.puissance = rand() % 100 + 1;
-        pokimacTerrain[i].defense = rand() % 100 + 1 ;
-        pokimacTerrain[i].endurance = rand() % 100 + 1 ;
-        pokimacTerrain[i].force = rand() % 100 + 1 ;
-        pokimacTerrain[i].confiance = rand() % 100 + 1 ;
+        pokimacTerrain[i].attaque2.puissance = 0;
+        pokimacTerrain[i].defense = rand() % 60 + 1 ;
+        pokimacTerrain[i].endurance = rand() % 45 + 15 ;
+        pokimacTerrain[i].force = rand() % 45 + 15 ;
+        pokimacTerrain[i].confiance = rand() % 50 + 20 ;
         pokimacTerrain[i].pv = 100 ;
         pokimacTerrain[i].position = {(rand() * ((longueur-1) - 1) / RAND_MAX + 1 ), (rand() * ((hauteur-1) - 1) / RAND_MAX + 1 )};
     }

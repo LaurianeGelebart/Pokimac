@@ -268,14 +268,14 @@
 	<string>
 	<iostream>
 
-1642433392 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\afficheascii.cpp
+1642586875 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\afficheascii.cpp
 	<stdio.h>
 	"afficheASCII.h"
 
 1642421715 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\afficheascii.h
 	<stdio.h>
 
-1642437302 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\combat.cpp
+1642587143 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\combat.cpp
 	"consoleUtils.hpp"
 	"declarations.h"
 	"affichageTerrain.h"
@@ -302,7 +302,7 @@
 	<string>
 	<iostream>
 
-1642421715 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\menudebut.h
+1642587716 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\menudebut.h
 	"consoleUtils.hpp"
 	<algorithm>
 	<cstdlib>
@@ -314,7 +314,7 @@
 1642427623 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\deplacement.cpp
 	"combat.h"
 
-1642427546 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\combat.h
+1642584950 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\combat.h
 	"consoleUtils.hpp"
 	"declarations.h"
 	"affichageTerrain.h"
@@ -331,7 +331,7 @@
 	<Windows.h>
 	<unistd.h>
 
-1642435628 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\menudebut.cpp
+1642587862 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\menudebut.cpp
 	"consoleUtils.hpp"
 	"menuDebut.h"
 	<algorithm>
@@ -340,8 +340,10 @@
 	<math.h>
 	<string>
 	<iostream>
+	<Windows.h>
+	<unistd.h>
 
-1642437940 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\main.cpp
+1642587779 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\main.cpp
 	"consoleUtils.hpp"
 	"Accueil.h"
 	"declarations.h"
@@ -350,6 +352,7 @@
 	"menuDebut.h"
 	"afficheASCII.h"
 	"combat.h"
+	"Victoire.h"
 	<algorithm>
 	<cstdlib>
 	<cstdio>
@@ -367,4 +370,12 @@
 	"Accueil.h"
 
 1642428148 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\accueil.h
+
+1642587486 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\victoire.h
+
+1642587659 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\victoire.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	"Victoire.h"
 

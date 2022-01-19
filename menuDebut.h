@@ -13,6 +13,6 @@
 
 using namespace std;
 
-void menuDebut(int* longueur, int* hauteur, int *nombre);
+void menuDebut(int* longueur, int* hauteur, int* nombre, string* nom);
 
 #endif // MENUDEBUT_H

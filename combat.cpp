@@ -19,12 +19,12 @@
 #include <iostream>
 
 
-void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char* tab,Pokimac* pokimacTerrain,int nombrePokimac, Position centerPos);
+void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char* tab,Pokimac* pokimacTerrain,int nombrePokimac, Position centerPos, int oldPokimac);
 void affichePokimac(Pokimac *pok);
 
 using namespace std;
 
-bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac, Position centerPos){
+bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, char* tab, Pokimac* pokimacTerrain, int nombrePokimac, Position centerPos, int oldPokimac){
     ConsoleUtils::clear();
     bool SomeoneAlive=false;
 
@@ -36,8 +36,10 @@ bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, ch
             if(SomeoneAlive){
 
                 cout << "Un " << pokRencontre->nom << " apparait !" << endl;
+                cout << endl;
                 int choix ;
                 affichePokimac(pokRencontre);
+                affichePokimac(&(joueur->equipe[oldPokimac]));
                 cout << "Que voulez-vous faire ?" <<endl;
                 cout << "1-Attaquer 2-Capturer 3-Donner une baie 4-Tentative de seduction 5-Fuir 6-Inventaire:" << endl ;
                 cin >> choix ;
@@ -57,6 +59,7 @@ bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, ch
                                         }
                                         cin >> choixPokimac;
                                         choixPokimac -= 1;
+                                        oldPokimac =choixPokimac;
                                         if((joueur->equipe[choixPokimac].pv) <= 0){
                                             cout << joueur->equipe[choixPokimac].nom << " est K.O., choisis en un autre !" << endl;
                                         }
@@ -65,38 +68,64 @@ bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, ch
                                         }
                                 }
                                 while (!Alive);
+
+                                //Dégats du joueur
+
+                                joueur->equipe[choixPokimac].attaque1.puissance = (joueur->equipe[choixPokimac].force)-(0.3*(pokRencontre->defense));
+                                joueur->equipe[choixPokimac].attaque2.puissance = (joueur->equipe[choixPokimac].endurance)-(0.25*(pokRencontre->defense));
+
+                                //Dégats du Pokimac rencontré
+                                pokRencontre->attaque1.puissance = (pokRencontre->force)-(0.3*(joueur->equipe[choixPokimac].defense));
+                                pokRencontre->attaque2.puissance = (pokRencontre->endurance)-(0.25*(joueur->equipe[choixPokimac].defense));
+
+                                //Cas ou les attaques prennent des valeurs négatives
+                                if((joueur->equipe[choixPokimac].attaque1.puissance)<0){
+                                     joueur->equipe[choixPokimac].attaque1.puissance = 0;
+                                }
+                                if((pokRencontre->attaque1.puissance)<0){
+                                    pokRencontre->attaque1.puissance = 0;
+                                }
+                                if((joueur->equipe[choixPokimac].attaque2.puissance)<0){
+                                     joueur->equipe[choixPokimac].attaque2.puissance = 0;
+                                }
+                                if((pokRencontre->attaque2.puissance)<0){
+                                    pokRencontre->attaque2.puissance = 0;
+                                }
+
                             cout << joueur->equipe[choixPokimac].nom << " en avant !" << endl;
+                            sleep(2);
+                            ConsoleUtils::clear();
                             cout << "Que dois-faire " << joueur->equipe[choixPokimac].nom << " ?" << endl;
                             cout << "1- " << joueur->equipe[choixPokimac].attaque1.nom <<endl;
                             cout << "2- " << joueur->equipe[choixPokimac].attaque2.nom <<endl;
                             int choixAttaque;
                             cin >> choixAttaque;
                                 if (choixAttaque==1){
-                                     cout << joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque1.nom << endl;
+                                     cout << "Votre " << joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque1.nom << endl;
                                      pokRencontre->pv = (pokRencontre->pv) - (joueur->equipe[choixPokimac].attaque1.puissance);
                                 }
                                 else{
-                                    cout << joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque2.nom << endl;
+                                    cout <<"Votre "<<joueur->equipe[choixPokimac].nom << " utilise " << joueur->equipe[choixPokimac].attaque2.nom << endl;
                                     pokRencontre->pv = (pokRencontre->pv) - (joueur->equipe[choixPokimac].attaque2.puissance);
                                 }
-                                //cout <<
+
                             sleep(3);
                             ConsoleUtils::clear();
                             affichePokimac(pokRencontre);
-                            int choixAttaquePokrencontre = rand() % 2 + 1;
+                            int choixAttaquePokrencontre = rand() % 2 + 1; // choisi attaque1 ou attaque2
                                 if (choixAttaquePokrencontre==1){
-                                         cout << pokRencontre->nom << " utilise " << pokRencontre->attaque1.nom << endl;
+                                         cout <<"Le " << pokRencontre->nom << " sauvage utilise " << pokRencontre->attaque1.nom << endl;
                                          joueur->equipe[choixPokimac].pv = (joueur->equipe[choixPokimac].pv) - (pokRencontre->attaque1.puissance);
                                     }
                                     else{
-                                        cout << pokRencontre->nom << " utilise " << pokRencontre->attaque2.nom << endl;
+                                        cout <<"Le " << pokRencontre->nom << " sauvage utilise " << pokRencontre->attaque2.nom << endl;
                                         joueur->equipe[choixPokimac].pv = (joueur->equipe[choixPokimac].pv) - (pokRencontre->attaque2.puissance);
                                     }
                                     sleep(5);
-                                    affichePokimac(&(joueur->equipe[choixPokimac]));
-                            sleep(5);
+                                    //affichePokimac(&(joueur->equipe[choixPokimac]));
+                            //sleep(5);
                             ConsoleUtils::clear();
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                             return false ;
                         }
 
@@ -109,7 +138,7 @@ bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, ch
                         if (joueur->inventaire.nbPokiball > 0){ //Le pokimac est capturé
                            cout << "Vous lancez une pokiball sur " << pokRencontre->nom << endl ;
                            joueur->inventaire.nbPokiball -- ;
-                               if (pokRencontre->confiance>50 || pokRencontre->pv<30){
+                               if (pokRencontre->confiance>50 || pokRencontre->pv<(rand() % 30 + 1)){
                                     cout << "Bravo ! "<< pokRencontre->nom << " fait parti de votre équipe" << endl ;
                                     joueur->nbPokimac ++ ;
                                     joueur->equipe[(joueur->nbPokimac)-1] = *pokRencontre ; // A
@@ -122,7 +151,7 @@ bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, ch
                                }else { // Le pokimac ne rentre pas
                                 cout << "Dommage..." << pokRencontre->nom << " est trop fort pour vous..." << endl ;
                                 sleep(3) ;
-                                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                                combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                                }
                         }else { // Il n'y a pas de pokiball dans l'inventaire
                             sleep(3) ;
@@ -136,15 +165,15 @@ bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, ch
                     case 3 : //Donner une baie
                         {
                         if (joueur->inventaire.nbBaie>0){
-                            cout << "Vous donnez une baie à " << pokRencontre->nom << endl ;
+                            cout << "Vous donnez une baie a " << pokRencontre->nom << endl ;
                             joueur->inventaire.nbBaie -- ;
                             pokRencontre->confiance = pokRencontre->confiance + 6 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         } else {
                             cout << "Vous n'avez plus de baies... " << endl;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                             return false;
                         }
                         return false ;
@@ -153,7 +182,7 @@ bool combat(Joueur *joueur, Pokimac *pokRencontre, int hauteur, int longueur, ch
 
                     case 4 : //Séduire
                         {
-                        seduire(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                        seduire(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         return false ;
                         }
                     break ;
@@ -185,17 +214,18 @@ return true;
 
 void affichePokimac(Pokimac *pok){
     print_pokemon(pok->ascii) ;
+    cout << endl;
     cout << "Nom : " << pok->nom << endl ;
     cout << "Espece : " <<pok->espece << endl << endl ;
     cout << "PV : " << pok->pv << endl;
     cout << "Force : " << pok->force << endl ;
     cout << "Endurance : " << pok->endurance << endl ;
-    cout << "Défense : " << pok->defense << endl << endl ;
+    cout << "Defense : " << pok->defense << endl << endl ;
 }
 
-void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char* tab,Pokimac* pokimacTerrain,int nombrePokimac, Position centerPos){
+void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char* tab,Pokimac* pokimacTerrain,int nombrePokimac, Position centerPos, int oldPokimac){
     int choixSeduction ;
-    cout << "Vous voulez tenter de plaire à " << pokRencontre->nom << endl << "Pour cela vous pouvez : " << endl << "1-Danse de seduction" << endl << "2-Faire une blague" << endl << "3-Declamer un poème" << endl << "4-Retour" << endl;
+    cout << "Vous voulez tenter de plaire a " << pokRencontre->nom << endl << "Pour cela vous pouvez : " << endl << "1-Danse de seduction" << endl << "2-Faire une blague" << endl << "3-Declamer un poème" << endl << "4-Retour" << endl;
     cin >> choixSeduction ;
             switch (choixSeduction){
                  case 1 : //Danse
@@ -205,17 +235,17 @@ void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char*
                             cout << "Quel swing ! " << pokRencontre->nom << " vous aime de plus en plus !" << endl ;
                             pokRencontre->confiance = pokRencontre->confiance + 10 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }else if (talentDanse>30 && talentDanse<=60){
                             cout << "Bon vous n'etes pas le danseur de l'annee mais au moins vous l'avez fait rire.. " << pokRencontre->nom << " vous trouve un peu plus sympathique !" << endl ;
                             pokRencontre->confiance = pokRencontre->confiance + 5 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }else {
                             cout << "Dommage vous n'etes vraiment pas un bon danseur, tout ce que vous avez reussi a faire c'est lui faire peur..." << endl ;
                             pokRencontre->confiance = pokRencontre->confiance - 5 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }
                      }
                 break ;
@@ -226,17 +256,17 @@ void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char*
                             cout << pokRencontre->nom << " se roule par terre, bravo vous etes quelqu'un de drole !" << endl ;
                             pokRencontre->confiance = pokRencontre->confiance + 10 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }else if (talentBlague>30 && talentBlague<=60){
                             cout << "Que fait une fraise sur un cheval ? Tagada Tagada" << endl << "Vous avez de la chance "<< pokRencontre->nom << " est aussi bete que vous il a trouve ca drole..." << endl ;
                             pokRencontre->confiance = pokRencontre->confiance + 5 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }else {
                             cout << "Peut-etre qu'insulter sa famille n'etait pas si drole que ca en fait... " << endl ;
                             pokRencontre->confiance = pokRencontre->confiance - 5 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }
                     }
                 break ;
@@ -247,17 +277,17 @@ void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char*
                             cout << "Rimbaud, Prevert, Verlaine, Hugo, ils n'ont aucun secret pour vous " << pokRencontre->nom << " adore !" << endl ;
                             pokRencontre->confiance = pokRencontre->confiance + 10 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }else if (talentPoeme>30 && talentPoeme<=60){
                             cout << "Chanter du PNL est une idee originale" << endl << "Vous avez de la chance "<< pokRencontre->nom << " a eu l'air de trouver ca plus ou moins jolie." << endl ;
                             pokRencontre->confiance = pokRencontre->confiance + 5 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }else {
                             cout << "Et non ! Votre cours d'arithmetique (bien que tres poetique pour vous), n'est pas un poeme, vous faite un peu peur a " << pokRencontre->nom << " maintenant..." << endl ;
                             pokRencontre->confiance = pokRencontre->confiance - 5 ;
                             sleep(3) ;
-                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                            combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                         }
                     }
                 break ;
@@ -265,7 +295,7 @@ void seduire(Joueur *joueur,Pokimac *pokRencontre,int hauteur,int longueur,char*
                     cout << "Vous vous degonflez, vous ne croyez pas assez en vous, c'est vraiment dommage, nous sommes pourtant certain que vous etiez un bon danseur... " << endl ;
                     pokRencontre->confiance = pokRencontre->confiance - 5 ;
                     sleep(3) ;
-                    combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos);
+                    combat(joueur, pokRencontre, hauteur, longueur, tab, pokimacTerrain, nombrePokimac, centerPos, oldPokimac);
                 break ;
 
             }
