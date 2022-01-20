@@ -33,7 +33,7 @@ void Accueil() {
     cout << endl;
     cout << "                         ___________________________________________________" <<endl;
     cout << endl;
-    cout << "                         | Appuie sur une touche pour commencer a Jouer ! |" << endl;
+    cout << "                         | Appuyer sur une touche pour commencer a Jouer ! |" << endl;
     cout << "                         ___________________________________________________" << endl;
     getch();
 }
