@@ -36,6 +36,7 @@
 		<Unit filename="Accueil.h" />
 		<Unit filename="Defaite.cpp" />
 		<Unit filename="Defaite.h" />
+		<Unit filename="Makefile" />
 		<Unit filename="Victoire.cpp" />
 		<Unit filename="Victoire.h" />
 		<Unit filename="affichageTerrain.cpp" />
