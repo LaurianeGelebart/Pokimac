@@ -74,3 +74,104 @@
 	<string>
 	<iostream>
 
+1642588846 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.cpp
+	<stdio.h>
+	"afficheASCII.h"
+
+1640715415 c:\users\lauri\documents\imac\c++\pokimac\pokimac\afficheascii.h
+	<stdio.h>
+
+1642773417 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\combat.cpp
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	"deplacement.h"
+	"menuDebut.h"
+	"afficheASCII.h"
+	"afficheASCII.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<typeinfo>
+	<Windows.h>
+	<unistd.h>
+	<iostream>
+
+1639999345 c:\users\lauri\documents\imac\c++\pokimac\pokimac\consoleutils.hpp
+	<iostream>
+	<string>
+	<cstdio>
+	<chrono>
+	<thread>
+	<windows.h>
+	<conio.h>
+	<termios.h>
+	<unistd.h>
+	<sys/ioctl.h>
+
+1642326583 c:\users\lauri\documents\imac\c++\pokimac\pokimac\declarations.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642332145 c:\users\lauri\documents\imac\c++\pokimac\pokimac\affichageterrain.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642327955 c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642588846 c:\users\lauri\documents\imac\c++\pokimac\pokimac\menudebut.h
+	"consoleUtils.hpp"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642438276 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\deplacement.cpp
+	"combat.h"
+
+1642588846 c:\users\lauri\documents\imac\c++\pokimac\pokimac\combat.h
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	"deplacement.h"
+	"menuDebut.h"
+	"afficheASCII.h"
+	"combat.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<typeinfo>
+	<Windows.h>
+	<unistd.h>
+
+1642773417 source:c:\users\lauri\documents\imac\c++\pokimac\pokimac\victoire.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	"Victoire.h"
+
+1642588846 c:\users\lauri\documents\imac\c++\pokimac\pokimac\victoire.h
+

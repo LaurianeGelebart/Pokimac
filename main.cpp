@@ -79,17 +79,23 @@ int main() {
             for (int i=0 ; i<nombrePokimac ; i++){
                 if ((oldPos.x == pokimacTerrain[i].position.x) && (oldPos.y == pokimacTerrain[i].position.y) ){
                     ConsoleUtils::setCursorPos(oldPos.x, oldPos.y);
+                    ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(2)); //VERT
                     std::cout << "P" ; // Affiche pokimac
+                    ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(7)); //WHITE
                 }else if ((oldPos.x == centerPos.x) && (oldPos.y == centerPos.y) ){
+                    ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(4)); //ROUGE
                     ConsoleUtils::setCursorPos(oldPos.x, oldPos.y);
                     std::cout << "C" ; // Affiche centre pokimac
+                    ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(7)); //WHITE
                 }else {
                     ConsoleUtils::setCursorPos(oldPos.x, oldPos.y);
                     std::cout << tab[oldPos.y*longueur+oldPos.x]; // Affiche ce qu'il y avait à l'ancienne position du joueur --> Clean
                 }
             }
             ConsoleUtils::setCursorPos(joueur->position.x, joueur->position.y);
+            ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(3)); //CYAN
             std::cout << "@";
+            ConsoleUtils::setColor(static_cast<ConsoleUtils::Color>(7)); //WHITE
 		}
 		for (int i=0 ; i<nombrePokimac ; i++){
             if ((joueur->position.x == pokimacTerrain[i].position.x) && (joueur->position.y == pokimacTerrain[i].position.y) ){ // Si même position qu'un pokimac
