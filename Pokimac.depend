@@ -175,3 +175,91 @@
 
 1642588846 c:\users\lauri\documents\imac\c++\pokimac\pokimac\victoire.h
 
+1642773272 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\accueil.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	"Accueil.h"
+
+1642428148 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\accueil.h
+
+1642773878 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\affichageterrain.cpp
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<iostream>
+
+1642773268 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\combat.cpp
+	"consoleUtils.hpp"
+	"declarations.h"
+	"affichageTerrain.h"
+	"deplacement.h"
+	"menuDebut.h"
+	"afficheASCII.h"
+	"afficheASCII.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<typeinfo>
+	<Windows.h>
+	<unistd.h>
+	<iostream>
+
+1642773270 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\defaite.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	"Defaite.h"
+
+1642773271 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\defaite.h
+
+1642773878 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\main.cpp
+	"consoleUtils.hpp"
+	"Accueil.h"
+	"declarations.h"
+	"affichageTerrain.h"
+	"deplacement.h"
+	"menuDebut.h"
+	"afficheASCII.h"
+	"combat.h"
+	"Victoire.h"
+	"Defaite.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<math.h>
+	<string>
+	<typeinfo>
+	<Windows.h>
+	<unistd.h>
+	<iostream>
+
+1642587486 e:\théo\bureau\imac\algorithmique\projet poki\pokimac\victoire.h
+
+1642773229 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\menudebut.cpp
+	"consoleUtils.hpp"
+	"menuDebut.h"
+	<algorithm>
+	<cstdlib>
+	<cstdio>
+	<stdio.h>
+	<conio.h>
+	<math.h>
+	<string>
+	<iostream>
+	<Windows.h>
+	<unistd.h>
+
+1642773269 source:e:\théo\bureau\imac\algorithmique\projet poki\pokimac\victoire.cpp
+	<iostream>
+	<stdio.h>
+	<conio.h>
+	"Victoire.h"
+

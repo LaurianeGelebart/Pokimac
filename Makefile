@@ -16,5 +16,7 @@ main.o : main.cpp
 clean :
 	del *.o
 	del *.d
+	#rm *.o pour Linux
+	#rm *.d pour Linux
 
 -include $(SRC:%.cpp=%.d)
